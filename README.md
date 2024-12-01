@@ -1,16 +1,32 @@
-# uno_score_tracker
+# Uno Score Tracker
 
-A new Flutter project.
+Uno Score Tracker é um aplicativo Flutter desenvolvido para gerenciar as pontuações de jogadores durante partidas de Uno.
 
-## Getting Started
+## Funcionalidades
+- Rastreia a pontuação de múltiplos jogadores.
+- Adicione até dez jogadores.
+- Veja a interface adaptar-se conforme a pontuação do game muda.
+- Interface simples e intuitiva.
 
-This project is a starting point for a Flutter application.
+## Tecnologias Utilizadas
+- Flutter
+- Dart
 
-A few resources to get you started if this is your first Flutter project:
+## Como Rodar o Projeto
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone este repositório:
+```bash
+git clone https://github.com/gabrielsants/uno_score_tracker.git
+```
+2. Navegue até a pasta do projeto:
+```bash
+cd uno_score_tracker
+```
+3. Instale as dependências:
+```bash 
+flutter pub get
+```
+4. Execute o aplicativo:
+```bash 
+flutter run
+```
