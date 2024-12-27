@@ -4,6 +4,12 @@ void main() {
   runApp(const UnoScoreApp());
 }
 
+// Classe global para gerenciar as configuracoes do aplicativo
+// No futuro poderao ter novas configuracoes nessa tela
+class AppSettings {
+  static bool resetPointsOnRemove = false;
+}
+
 class UnoScoreApp extends StatelessWidget {
   const UnoScoreApp({super.key});
 
@@ -99,11 +105,22 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
   void removePlayer(Player player) {
     setState(() {
       players.remove(player);
-      if (players.isNotEmpty && players.first == lastLeader) {
+      verifyUserParameters();
+    });
+  }
+
+  void verifyUserParameters() {
+    if (AppSettings.resetPointsOnRemove) {
+      for (var player in players) {
+        player.score = 0;
+        player.streak = 0;
+      }
+      lastLeader = null;
+      lastPlayer = null;
+    } else if (players.isNotEmpty && players.first == lastLeader) {
         lastLeader = null;
         lastPlayer = null;
-      }
-    });
+    }
   }
 
   void showSnackBar(String message) {
@@ -163,6 +180,16 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
                 );
               },
             ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Configurações'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  const SettingsPage()),
+                );
+              }
+            )
           ],
         ),
       ),
@@ -345,6 +372,41 @@ class AboutPage extends StatelessWidget {
             Text(
               'Desenvolvido com Flutter por Gabriel Santos.',
               style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
+  @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Configurações'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SwitchListTile(
+              title: const Text('Zerar pontos ao remover jogador'),
+              value: AppSettings.resetPointsOnRemove,
+              onChanged: (bool value) {
+                setState(() {
+                  AppSettings.resetPointsOnRemove = value;
+                });
+              },
             ),
           ],
         ),
