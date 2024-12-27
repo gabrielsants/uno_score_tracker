@@ -62,6 +62,7 @@ flutter:
     - assets/card_background_1.png
     - assets/card_background_2.png
     - assets/card_background_3.png
+    - assets/card_background_4.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
