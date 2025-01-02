@@ -8,6 +8,7 @@ void main() {
 // No futuro poderao ter novas configuracoes nessa tela
 class AppSettings {
   static bool resetPointsOnRemove = false;
+  static bool resetPointsOnNewPlayer = false;
 }
 
 class UnoScoreApp extends StatelessWidget {
@@ -50,7 +51,19 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
           ),
         );
       });
+      verifyUserParametersOnNewPlayer();
       playerNameController.clear();
+    }
+  }
+
+  void verifyUserParametersOnNewPlayer() {
+    if (AppSettings.resetPointsOnNewPlayer) {
+      for (var player in players) {
+        player.score = 0;
+        player.streak = 0;
+      }
+      lastLeader = null;
+      lastPlayer = null;
     }
   }
 
@@ -207,6 +220,7 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
                       border: OutlineInputBorder(),
                       suffixIcon: Icon(Icons.person_add),
                     ),
+                    onSubmitted: (value) => addPlayer(value),
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -299,7 +313,7 @@ class PlayerCard extends StatelessWidget {
                 Text(
                   'Score: ${player.score}',
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
                   ),
@@ -405,6 +419,15 @@ class _SettingsPageState extends State<SettingsPage> {
               onChanged: (bool value) {
                 setState(() {
                   AppSettings.resetPointsOnRemove = value;
+                });
+              },
+            ),
+            SwitchListTile(
+              title: const Text('Zerar pontos ao adicionar novo jogador'),
+              value: AppSettings.resetPointsOnNewPlayer,
+              onChanged: (bool value) {
+                setState(() {
+                  AppSettings.resetPointsOnNewPlayer = value;
                 });
               },
             ),
