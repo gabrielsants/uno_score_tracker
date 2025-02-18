@@ -1,0 +1,20 @@
+{
+  "appTitle": "Uno Score Tracker",
+  "resetScore": "Reset Scores",
+  "home": "Home",
+  "about": "About",
+  "settings": "Settings",
+  "addPlayer": "Add Player",
+  "add": "Add",
+  "remove": "Remove",
+  "noPlayers": "No players added yet.",
+  "score": "Score: ",
+  "aboutSection": "This app helps you track UNO game scores simply and efficiently.",
+  "aboutSectionRules": "You can add up to 10 players, adjust scores, and reset games easily.",
+  "madeBy": "Developed with Flutter by Gabriel Santos.",
+  "resetScoreOnRemove": "Reset scores when removing player",
+  "resetScoreOnAdd": "Reset scores when adding new player",
+  "onFire": "is on fire, ",
+  "scoreSequence": "consecutive points!",
+  "tookTheLead": "took the lead!"
+}

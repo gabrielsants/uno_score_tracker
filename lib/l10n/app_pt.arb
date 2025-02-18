@@ -1,0 +1,20 @@
+{
+  "appTitle": "Uno Score Tracker",
+  "resetScore": "Resetar pontos",
+  "home": "Ínicio",
+  "about": "Sobre",
+  "settings": "Configurações",
+  "addPlayer": "Adicionar Jogador",
+  "add": "Adicionar",
+  "remove": "Remover",
+  "noPlayers": "Nenhum jogador adicionado ainda.",
+  "score": "Pontos: ",
+  "aboutSection": "Este aplicativo ajuda você a rastrear pontuações de partidas de UNO de forma simples e eficiente.",
+  "aboutSectionRules": "Você pode adicionar até 10 jogadores, ajustar as pontuações e reiniciar as partidas com facilidade.",
+  "madeBy": "Desenvolvido com Flutter por Gabriel Santos.",
+  "resetScoreOnRemove": "Zerar pontos ao remover jogador",
+  "resetScoreOnAdd": "Zerar pontos ao adicionar novo jogador",
+  "onFire": "está com tudo, ",
+  "scoreSequence": "pontos seguidos!",
+  "tookTheLead": "assumiu a liderança!"
+}
