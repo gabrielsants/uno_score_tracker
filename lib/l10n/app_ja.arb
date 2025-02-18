@@ -15,6 +15,6 @@
   "resetScoreOnRemove": "プレイヤーを削除するときにスコアをリセット",
   "resetScoreOnAdd": "新しいプレイヤーを追加するときにスコアをリセット",
   "onFire": "絶好調です、",
-  "scoreSequence": "連続ポイント！"
+  "scoreSequence": "連続ポイント！",
   "tookTheLead": "リードを取りました！"
 }
