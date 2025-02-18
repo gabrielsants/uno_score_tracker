@@ -36,3 +36,9 @@ flutter pub get
 ```bash 
 flutter run
 ```
+
+## Contributors
+
+<a href="https://github.com/gabrielsants/uno_score_tracker/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=gabrielsants/uno_score_tracker" />
+</a>
