@@ -6,5 +6,6 @@
       "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
     }
   ],
-  "public": "build/web"
+  "outputDirectory": "build/web",
+  "public": true
 }
