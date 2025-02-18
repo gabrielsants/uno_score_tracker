@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'player_model.dart';
 import 'score_view_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScoreHomePage extends StatefulWidget {
   const ScoreHomePage({super.key});
@@ -31,11 +32,11 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('UNO Score Tracker'),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            tooltip: 'Reset Scores',
+            tooltip: AppLocalizations.of(context)!.resetScore,
             onPressed: () {
               setState(() {
                 scoreVM.resetScores;
@@ -48,13 +49,13 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+            DrawerHeader(
+              decoration: const BoxDecoration(
                 color: Colors.blue,
               ),
               child: Text(
-                'UNO Score Tracker',
-                style: TextStyle(
+                AppLocalizations.of(context)!.appTitle,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                 ),
@@ -62,14 +63,14 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text('Home'),
+              title: Text(AppLocalizations.of(context)!.home),
               onTap: () {
                 Navigator.pop(context); // Fecha o menu
               },
             ),
             ListTile(
               leading: const Icon(Icons.info),
-              title: const Text('Sobre'),
+              title: Text(AppLocalizations.of(context)!.about),
               onTap: () {
                 Navigator.push(
                   context,
@@ -79,7 +80,7 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
             ),
             ListTile(
                 leading: const Icon(Icons.settings),
-                title: const Text('Configurações'),
+                title: Text(AppLocalizations.of(context)!.settings),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -99,32 +100,32 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
                 Expanded(
                   child: TextField(
                     controller: scoreVM.playerNameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Add Player',
-                      border: OutlineInputBorder(),
-                      suffixIcon: Icon(Icons.person_add),
+                    decoration: InputDecoration(
+                      labelText: AppLocalizations.of(context)!.addPlayer,
+                      border: const OutlineInputBorder(),
+                      suffixIcon: const Icon(Icons.person_add),
                     ),
                     onSubmitted: (value) => setState(() {
-                      scoreVM.addPlayer(value);
+                      scoreVM.addPlayer(context, value);
                     }),
                   ),
                 ),
                 const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () => setState(() {
-                    scoreVM.addPlayer(scoreVM.playerNameController.text);
+                    scoreVM.addPlayer(context, scoreVM.playerNameController.text);
                   }),
-                  child: const Text('Add'),
+                  child: Text(AppLocalizations.of(context)!.add),
                 ),
               ],
             ),
           ),
           Expanded(
             child: scoreVM.players.isEmpty
-                ? const Center(
+                ? Center(
                     child: Text(
-                      'No players added yet.',
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                      AppLocalizations.of(context)!.noPlayers,
+                      style: const TextStyle(fontSize: 18, color: Colors.grey),
                     ),
                   )
                 : GridView.builder(
@@ -141,7 +142,7 @@ class _ScoreHomePageState extends State<ScoreHomePage> {
                       return PlayerCard(
                         player: player,
                         onScoreChange: (delta) => setState(() {
-                          scoreVM.updateScore(player, delta);
+                          scoreVM.updateScore(context, player, delta);
                           if (scoreVM.snackbarKillStreakText != null) {
                             //? Linter do Dart nao é mt inteligente, entao se eu nao colocar o "!", ele
                             //? fica pensando que pode ser nulo MESMO DENTRO DA PORRA DO IF
@@ -213,7 +214,7 @@ class PlayerCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  'Score: ${player.score}',
+                    '${AppLocalizations.of(context)!.score}: ${player.score}',
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
@@ -252,8 +253,8 @@ class PlayerCard extends StatelessWidget {
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   ),
                   icon: const Icon(Icons.delete, color: Colors.white),
-                  label: const Text('Remove',
-                      style: TextStyle(color: Colors.white)),
+                  label: Text(AppLocalizations.of(context)!.remove,
+                      style: const TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -273,27 +274,27 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sobre'),
+        title: Text(AppLocalizations.of(context)!.about)
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'UNO Score Tracker',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              AppLocalizations.of(context)!.appTitle,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              'Este aplicativo ajuda você a rastrear pontuações de partidas de UNO de forma simples e eficiente. '
-              'Você pode adicionar até 10 jogadores, ajustar as pontuações e reiniciar as partidas com facilidade.',
-              style: TextStyle(fontSize: 16),
+              AppLocalizations.of(context)!.aboutSection +
+              AppLocalizations.of(context)!.aboutSectionRules,
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              'Desenvolvido com Flutter por Gabriel Santos.',
-              style: TextStyle(fontSize: 16),
+              AppLocalizations.of(context)!.madeBy,
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),
@@ -314,7 +315,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Configurações'),
+        title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -322,7 +323,7 @@ class _SettingsPageState extends State<SettingsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SwitchListTile(
-              title: const Text('Zerar pontos ao remover jogador'),
+              title: Text(AppLocalizations.of(context)!.resetScoreOnRemove),
               value: AppSettings.resetPointsOnRemove,
               onChanged: (bool value) {
                 setState(() {
@@ -331,7 +332,7 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
             SwitchListTile(
-              title: const Text('Zerar pontos ao adicionar novo jogador'),
+              title: Text(AppLocalizations.of(context)!.resetScoreOnAdd),
               value: AppSettings.resetPointsOnNewPlayer,
               onChanged: (bool value) {
                 setState(() {

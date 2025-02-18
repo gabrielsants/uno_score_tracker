@@ -1,0 +1,20 @@
+{
+  "appTitle": "Uno スコアトラッカー",
+  "resetScore": "スコアをリセット",
+  "home": "ホーム",
+  "about": "情報",
+  "settings": "設定",
+  "addPlayer": "プレイヤーを追加",
+  "add": "追加",
+  "remove": "削除",
+  "noPlayers": "まだプレイヤーが追加されていません。",
+  "score": "スコア: ",
+  "aboutSection": "このアプリは、UNOゲームのスコアをシンプルかつ効率的に追跡するのに役立ちます。",
+  "aboutSectionRules": "最大10人のプレイヤーを追加し、スコアを調整し、簡単にゲームをリセットできます。",
+  "madeBy": "Flutterで開発されたGabriel Santos。",
+  "resetScoreOnRemove": "プレイヤーを削除するときにスコアをリセット",
+  "resetScoreOnAdd": "新しいプレイヤーを追加するときにスコアをリセット",
+  "onFire": "絶好調です、",
+  "scoreSequence": "連続ポイント！"
+  "tookTheLead": "リードを取りました！"
+}

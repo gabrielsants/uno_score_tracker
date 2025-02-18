@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'main.dart';
 import 'player_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ScoreViewModel {
   final List<Player> players = [];
@@ -13,7 +14,7 @@ class ScoreViewModel {
   Player? lastPlayer;
   Player? lastLeader;
 
-  void addPlayer(String name) {
+  void addPlayer(BuildContext context, String name) {
     if (name.isNotEmpty && players.length < 10) {
       players.add(
         Player(
@@ -38,7 +39,7 @@ class ScoreViewModel {
     }
   }
 
-  void updateScore(Player player, int delta) {
+  void updateScore(BuildContext context, Player player, int delta) {
     // Atualiza a pontuação do jogador.
     player.score += delta;
 
@@ -53,7 +54,7 @@ class ScoreViewModel {
         if (player.streak > 1) {
           //? É uma forma alternativa para salvar o texto e mostrar na view...
           snackbarKillStreakText =
-              '${player.name} está com tudo, ${player.streak} pontos seguidos!';
+          '${player.name} ${AppLocalizations.of(context)!.onFire} ${player.streak} ${AppLocalizations.of(context)!.scoreSequence}';
         }
       } else {
         // Se outro jogador pontuar, a sequência do anterior é zerada.
@@ -72,7 +73,7 @@ class ScoreViewModel {
     if (players.isNotEmpty && players.first != lastLeader) {
       lastLeader = players.first;
       //? É uma forma alternativa para salvar o texto e mostrar na view...
-      snackbarNewGameLeaderText = '${players.first.name} assumiu a liderança!';
+      snackbarNewGameLeaderText = '${players.first.name} ${AppLocalizations.of(context)!.tookTheLead}';
     }
   }
 
